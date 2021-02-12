@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <header th:insert="fragments/supplement.html :: header"></header>
+<h1 >Here are your results( sided dice)</h1>
+<table id="names" th:if="${diceList!= null AND diceList!= ''}">
+<tr><th>Die#</th><th>Result</th><th>Total</th></tr>
+<tr th:each="s : ${diceList}">
+<td th:text="${s.numberOfDices}"></td>
+<td th:text="${s.results}"></td>
+<td th:text="${s.diceTotal}"></td>
+
+</table>
+<button id="buton" onclick="window.history.go(-1);">Same Again</button>
+<a th:href="@{/}">New Roll</a>
+<footer th:replace="fragments/supplement.html :: footer"></footer>
+
+</body>
+</html>
