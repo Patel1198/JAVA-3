@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Check Page</title>
+<link rel="stylesheet" type="text/css" media="all"  
+href="../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+</head>
+<body>
+<br><br>
+<h1>Check</h1>
+<div sec:authorize="isAuthenticated()">
+User's Name: <span sec:authentication="name"></span>
+<br>
+ Roles: <span sec:authentication="principal.authorities"> </span><br><br>
+ <div>
+ <form method="get" action="/check" th:action="@{/logout}">
+ <input type="submit" value="Logout" />
+ </form></div></div>
+</body>
+</html>
