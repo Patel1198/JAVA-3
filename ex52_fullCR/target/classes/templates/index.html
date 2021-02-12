@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+body{	
+font-family:Arial, Helvetica, sans-serif;
+font-weight:900;
+text-align:center;
+}
+
+#names {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#names td, #names th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#names tr:nth-child(even){background-color: #f2f2f2;}
+
+#names tr:hover {background-color: #ddd;}
+
+#names th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+#buton {
+padding: 16px 32px;
+		cursor: pointer;
+		background-color: white;
+		color: black;
+		text-align:center;
+		border-radius: 20px 40px;
+		border-style:solid;
+		border-width:2px;
+		font-size:20px;
+		font-weight:bold;
+}
+</style>
+<body>
+<h1>Appointment List</h1>
+<table id="names" th:if="${appointmentList!= null AND      appointmentList!= ''}">
+<tr th:each="s : ${appointmentList}">
+<td th:text="${s.id}">1000</td>
+<td th:text="${s.firstName}">Jay</td>
+<td th:text="${s.email}">jaypatel@gmail.com</td>
+<td th:text="${s.appointmentDate}">0000-00-00</td>
+<td th:text="${s.appointmentTime}">00-00</td>
+<td><a th:href="@{/editAppointmentById/}+${s.id}">Edit</a></td>
+<td><a th:href="@{/deleteAppointmentById/}+${s.id}">Delete</a></td>
+</tr>
+
+</table>
+<hr>
+<form method="post" action="#" th:action="@{/insertAppointment}" th:object="${appointment}">
+    <input type="hidden" name="id" th:field="*{id}"/>
+    Name: <input type="text" name="name" th:field="*{firstName}" /><br><br>
+    Email: <input type="email" name="email" th:field="*{email}" /><br><br>
+    Appointment Date: <input type="date" name="appointmentDate" th:field="*{appointmentDate}" /><br><br>
+    Appointment Time: <input type="time" name="appointmentTime" th:field="*{appointmentTime}" /><br><br>
+    <input id="buton" type="submit" value="Go!" />
+</form>
+
+</body>
+</html>
