@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>VideoGame List</title>
+<style>
+body{	
+background-color:#E6E6D8;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:900;
+}
+
+#videogames {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#videogames td, #videogames th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#videogames tr:nth-child(even){background-color: #f2f2f2;}
+
+#videogames tr:hover {background-color: #ddd;}
+
+#videogames th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+#buton {
+padding: 16px 32px;
+		cursor: pointer;
+		background-color: white;
+		color: black;
+		text-align:center;
+		border-radius: 20px 40px;
+		border-style:solid;
+		border-width:2px;
+		font-size:20px;
+		font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+<table id="videogames">
+  <tr>
+     <th>VideoGame ID</th><th>VideoGame Title</th><th>VideoGame Publisher</th><th>VideoGame Price</th><th>VideoGame Platform</th>
+  </tr>
+  <tr  th:each="aVideoGame: ${videoGameList}">
+    <td th:text="${aVideoGame.id}">1000</td>
+    <td th:text="${aVideoGame.title}">GTA V</td>
+    <td th:text="${aVideoGame.publisher}">rockstar games</td>
+    <td th:text="'$'+${aVideoGame.price}">10002</td>
+    <td th:text="${aVideoGame.platform}">Xbox</td>
+  </tr>
+</table>
+<hr><hr>
+<form method="post" action="#"   th:action="@{/addVideoGame}" th:object="${videoGame}" >
+
+<table>
+   
+     <tr><td> ID: </td>   <td><input type="number" th:field="*{id}"></td></tr>
+      <tr><td> Title: </td>   <td><input type="text" th:field="*{title}"></td></tr>
+     <tr><td> Publisher: </td>   <td><input type="text" th:field="*{publisher}"></td></tr>
+     <tr><td> Price: </td> <td><input type="number" step="0.01" th:field="*{price}" /></td></tr>
+     <tr><td> Platform: </td>   <td><select  th:field="*{platform}">
+          <option th:each="p:*{platforms}" th:value="${p}" th:text="${p}">
+          </option></select>
+      </td>
+   </tr>
+   <tr></tr>
+   <tr><td><input id="buton" type="submit" value="Add VideoGame!"></td></tr>
+
+</table>
+
+
+</form>
+</body>
+</html>
