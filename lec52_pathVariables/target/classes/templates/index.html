@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+body{	
+background-color:#AEB6BF;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:900;
+text-align:center;
+}
+
+#names {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#names td, #videogames th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#names tr:nth-child(even){background-color: #f2f2f2;}
+
+#names tr:hover {background-color: #ddd;}
+
+#names th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+#buton {
+padding: 16px 32px;
+		cursor: pointer;
+		background-color: white;
+		color: black;
+		text-align:center;
+		border-radius: 20px 40px;
+		border-style:solid;
+		border-width:2px;
+		font-size:20px;
+		font-weight:bold;
+}
+</style>
+<body>
+<h1>This is from index.html</h1>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for CarMaker.." title="Type in a CarMaker">
+<table id="names" th:if="${studentList!= null AND      studentList!= ''}">
+<tr th:each="s : ${studentList}">
+<td th:text="${s.id}">1000</td>
+<td th:text="${s.name}">Frank</td>
+<td><a th:href="@{/editStudentById/}+${s.id}">Edit</a></td>
+<td><a th:href="@{/deleteStudentById/}+${s.id}">Delete</a></td>
+</tr>
+
+</table>
+<hr>
+<form method="post" action="#" th:action="@{/insertStudent}" th:object="${student}">
+    <input type="hidden" name="id" th:field="*{id}"/>
+    Name: <input type="text" name="name" th:field="*{name}" /><br><br>
+    <input id="buton" type="submit" value="Go!" />
+</form>
+<script type="text/javascript">
+function myFunction() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("names");
+	  tr = table.getElementsByTagName("tr");
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[1];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } 
+		  else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+
+	  }
+	}
+</script>
+</body>
+</html>
