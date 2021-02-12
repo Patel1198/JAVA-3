@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>PhoneCart</title>
+<style>
+body{
+
+text-align:center;
+font-family:Arial, Helvetica, sans-serif;
+}
+.fe{
+font-size:18px;
+font-weight:900;
+border-radius:10px;
+}
+.fi{
+font-size:18px;
+}
+.po{
+background-color:#8AA3BF;
+}
+.ps{
+background-image: url("images/back.png");
+background-repeat: no-repeat;
+}
+#phones {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#phones td, #phones th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#phones tr:nth-child(even){background-color: #f2f2f2;}
+
+#phones tr:hover {background-color: #ddd;}
+
+#phones th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<div class=po>
+<h1>Phone Cart</h1><hr></div>
+<div class=ps>
+<form method="post" th:action="@{/insertPhone}" th:object="${phone}">
+<input type="hidden" name="id" th:field="*{id}"/>
+<label class="fi">model: </label><input class="fi" type="text" name="model" th:field="*{model}" /><br><br>
+<label class="fi">price: </label><input class="fi" type="number" name="price" th:field="*{price}" /><br><br>
+<input type="submit" class="fe" value="Submit!" />
+</form>
+<br><br>
+<table  id="phones" th:if="${session.phoneList!= null AND session.phoneList!= ''}">
+<tr th:each="s : ${session.phoneList}">
+<td th:text="${s.model}">iphone 12</td>
+<td th:text="${s.price}">1200</td>
+</tr>
+</table></div>
+</body>
+</html>
