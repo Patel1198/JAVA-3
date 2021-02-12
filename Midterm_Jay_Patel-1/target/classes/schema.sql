@@ -1,0 +1,8 @@
+CREATE TABLE cars(
+carId INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+manufacturer VARCHAR(255),
+model VARCHAR(255),
+year INT(10),
+colour VARCHAR(255),
+price DOUBLE
+);

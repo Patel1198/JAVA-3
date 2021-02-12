@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home page</title>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<header>
+<a th:href="@{/}">Home</a> &nbsp;|
+<a th:href="@{/addCar}">Add Car</a>&nbsp; |
+<a th:href="@{/searchCar}">Search Cars</a> &nbsp;|
+<a th:href="@{/viewCarList}">List Cars</a>
+<hr class="lin">
+</header>
+<br><br><br>
+<h1> This is Car database </h1>
+<p>
+			<img class="mySlides" src="images/sedan.jpg">
+			<img class="mySlides" src="images/suv.jpg" >
+			<img class="mySlides" src="images/sports.jpg" >
+			<img class="mySlides" src="images/hatchback.jpg" >
+			<img class="mySlides" src="images/convertible.jpg" >
+			<img class="mySlides" src="images/coupe.jpg">
+			<img class="mySlides" src="images/minivan.jpg">
+			<img class="mySlides" src="images/pickup.jpg">
+
+<script>
+var myIndex = 0;
+
+function slide() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(slide, 1000); 
+}
+slide();
+
+</script>
+
+<footer>
+&#169; &nbsp;2020 by Jay Patel All rights reserved
+</footer>
+</body>
+</html>

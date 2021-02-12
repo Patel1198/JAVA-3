@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<header>
+<a th:href="@{/}">Home</a> &nbsp;|
+<a th:href="@{/addCar}">Add Car</a>&nbsp; |
+<a th:href="@{/searchCar}">Search Cars</a> &nbsp;|
+<a th:href="@{/viewCarList}">List Cars</a>
+<hr class="lin">
+</header>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for CarMaker.." title="Type in a CarMaker">
+<table id="names" th:if="${carList!= null AND  carList!= ''}">
+	<tr th:each="s : ${carList}">
+	    <td th:text="${s.carId}">1000</td>
+		<td th:text="${s.manufacturer}">Honda</td>
+		<td th:text="${s.model}">Civic</td>
+		<td th:text="${s.year}">2019</td>
+		<td th:text="${s.colour}">Red</td>
+		<td th:text="${s.price}">10000</td>
+		<td><a th:href="@{/editCarById/} + ${s.carId}">EDIT</a></td>
+		<td><a th:href="@{/deleteCarById/} + ${s.carId}">DELETE</a></td>
+	</tr>
+</table>
+
+<footer>
+&#169; &nbsp;2020 by Jay Patel All rights reserved
+</footer>
+</body>
+</html>
