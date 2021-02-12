@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="all"  
+href="../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+</head>
+<body>
+<table id="names" th:if="${contactList!= null AND      contactList!= ''}">
+<tr><th>Name</th><th>Phone Number</th><th>Address</th><th>Email</th><th>Role</th><th>Edit</th><th>Delete</th></tr>
+<tr th:each="s : ${contactList}">
+<td th:text="${s.name}">FRANK</td>
+<td th:text="${s.phoneNumber}">6478903675</td>
+<td th:text="${s.address}">24 garden street</td>
+<td th:text="${s.email}">Frank@gmail.com</td>
+<td th:text="${s.role}">ROLE_USER</td>
+<td><a th:href="@{/editContactById/}+${s.id}">Edit</a></td>
+<td><a th:href="@{/deleteContactById/}+${s.id}">Delete</a></td>
+</tr>
+
+</table>
+<p><a href="/" th:href="@{/}">Back to home page</a></p>
+<p><a href="#" th:href="@{/logout}">Logout</a></p>
+</body>
+</html>

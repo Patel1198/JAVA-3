@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title>Login Page</title>
+<link rel="stylesheet" type="text/css" media="all"  
+href="../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+</head>
+<body>
+<br>
+<div class="container">
+<header>
+<a th:href="@{/}">Home</a>
+<a th:href="@{/secure/AddContact}">Add Contact </a>
+<a th:href="@{/secure/ListContacts}">List Contacts </a>
+<a th:href="@{/register}">Register User </a>
+</header>
+<hr>
+<h1>Login Page</h1><br>
+<img src="../static/images/logo.png" th:src="@{/images/logo.png}" width="100px" height="100px"/>
+<br>
+<form method="post" th:action="@{/login}">
+<div>
+	Username: <input type="text" name="username" /><br><br>
+	Password: <input type="password" name="password" /><br><br>
+	<input type="submit" id="buton" name="login-submit" value="Log In" />
+</div><br><br>
+<p><a href="/" th:href="@{/}">Back to home page</a></p>
+
+<div th:if="${param.error}">
+	<div class="error">
+		Invalid username or password.
+	</div>
+</div>
+<div th:if="${param.logout}">
+	<div class="error">
+		You have been logged out.
+	</div>
+</div>
+
+</form>
+<a th:href="@{/register}">Create A New User</a>
+<div class=footer>
+<p>	&#169; &nbsp; 2020 by Jay Patel All rights reserved.</p>
+</div></div>
+
+
+</body>
+</html>

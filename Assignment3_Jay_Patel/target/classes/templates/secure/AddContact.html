@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Contacts</title>
+<link rel="stylesheet" type="text/css" media="all"  
+href="../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+</head>
+<body>
+<form method="post"   th:action="@{/secure/AddContact}" th:object="${contact}">
+
+<table>
+   
+     <tr><td> Name: </td>   <td><input type="text" name="name" th:field="*{name}"></td></tr>
+      <tr><td>Phone Number:</td>   <td><input type="number" name="password" th:field="*{phoneNumber}"></td></tr>
+     <tr><td> Address:</td>   <td><input type="text" name="address" th:field="*{address}"></td></tr>
+     <tr><td> Email: </td>   <td><input type="email" name="email" th:field="*{email}"> </td></tr>
+   
+   <tr><td> Roles: </td>   <td><select  th:field="*{role}">
+          <option th:each="r:*{roles}" th:value="${r}" th:text="
+          ${r}">
+          </option></select> </td> </tr>
+ <tr><td><input id="buton" type="submit" value="Add Contact!"></td></tr>
+</table>
+
+
+</form>
+<p><a href="/" th:href="@{/}">Back to home page</a></p>
+<p><a href="#" th:href="@{/logout}">Logout</a></p>
+</body>
+</html>

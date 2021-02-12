@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" 
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Register Page</title>
+
+<link rel="stylesheet" type="text/css" media="all"  
+href="../static/css/mycss.css" th:href="@{/css/mycss.css}" />
+
+</head>
+<body>
+<br>
+<div class="container">
+<header>
+<a th:href="@{/}">Home</a>
+<a th:href="@{/secure/AddContact}">Add Contact </a>
+<a th:href="@{/secure/ListContacts}">List Contacts </a>
+<a th:href="@{/register}">Register User </a>
+</header>
+<hr>
+<h1>Register Here!</h1>
+<div id="error" class="error"></div>
+
+<form method="post" action="#"   th:action="@{/register}" onsubmit="return verify()" th:object="${contact}">
+
+<table id="users">
+   
+     <tr><td> Email: </td>   <td><input type="email" name="username" th:field="*{email}"></td></tr>
+      <tr><td> Password: </td>   <td><input type="password" name="password" th:field="*{encryptedPassword}"></td></tr>
+     <tr><td> Verify Password:</td>   <td><input type="password" name="verifyPassword" th:field="*{encryptedPassword}"></td></tr>
+     <tr><td> Roles: </td>   <td><select  th:field="*{role}">
+          <option th:each="r:*{roles}" th:value="${r}" th:text="${r}">
+          </option></select>
+      </td>
+   </tr>
+   <tr></tr>
+   <tr><td><input id="buton" type="submit" value="Add User!"></td></tr>
+
+</table>
+
+
+</form>
+
+<div class=footer>
+<p>	&#169; &nbsp; 2020 by Jay Patel All rights reserved.</p>
+</div></div>
+
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+</body>
+</html>
