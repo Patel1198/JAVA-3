@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<header>
+<a href="#">Home</a> &nbsp;|
+<a href="/addCar">Add Car</a>&nbsp; |
+<a href="/searchCar">Search Cars</a> &nbsp;|
+<a href="/viewCarList">List Cars</a>
+<hr class="lin">
+</header>
+<br><br><br>
+<table th:if="${carList!= null AND  carList!= ''}">
+	<tr th:each="s : ${carList}">
+	    <td th:text="${s.id}">1000</td>
+		<td th:text="${s.manufacturer}">Honda</td>
+		<td th:text="${s.model}">Civic</td>
+		<td th:text="${s.year}">2019</td>
+		<td th:text="${s.colour}">Red</td>
+		<td th:text="${s.price}">10000</td>
+		<td><a th:href="@{/editCarById/} + ${s.id}">EDIT</a></td>
+		<td><a th:href="@{/deleteCarById/} + ${s.id}">DELETE</a></td>
+	</tr>
+</table>
+
+
+<script type="text/javascript">
+function myFunction() {
+	  var input, filter, table, tr, td, i, txtValue;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("names");
+	  tr = table.getElementsByTagName("tr");
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[1];
+	    if (td) {
+	      txtValue = td.textContent || td.innerText;
+	      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } 
+		  else {
+	        tr[i].style.display = "none";
+	      }
+	    }
+
+	  }
+	}
+</script>
+<footer>
+&#169; &nbsp;2020 by Jay Patel All rights reserved
+</footer>
+</body>
+</html>

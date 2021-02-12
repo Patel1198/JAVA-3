@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<header>
+<a href="#">Home</a> &nbsp;|
+<a href="/addCar">Add Car</a>&nbsp; |
+<a href="/searchCar">Search Cars</a> &nbsp;|
+<a href="/viewCarList">List Cars</a>
+<hr class="lin">
+</header>
+<br><br><br>
+<form method="post" action="#" th:action="@{/insertCar}" th:object="${car}">
+   <input type="hidden" name="carId" th:field="*{carId}" />
+   <label>Manufacturer: </label> <select  th:field="*{smanufacturer}">
+          <option th:each="p:*{manufacturerList}" th:value="${p}" th:text="${p}">
+          </option></select><br>
+   <label>Model: </label> <input type="text" name="model" th:field="*{model}" /><br>
+   <label>Year: </label> <input type="number" name="year" th:field="*{year}" /><br>
+   <label>Colour: </label> <input type="text" name="colour" th:field="*{colour}" /><br>
+   <label>Price: </label> <input type="number" name="price" th:field="*{price}" /><br>
+   <input type="submit" value="addCar">
+</form>
+
+<footer>
+&#169; &nbsp;2020 by Jay Patel All rights reserved
+</footer>
+</body>
+</html>
