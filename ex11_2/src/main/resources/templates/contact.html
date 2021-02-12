@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>This is index.html</h1>
+<div th:if="${contactList!=null and !contactList.empty}">
+<table>
+<tr><th>First Name</th><th>Last Name</th><th>PhoneNumber</th><th>Date</th><th>Birthday</th></tr>
+<tr th:each="s:${contactList}">
+<td th:text="${s.firstName}">Jay</td>
+<td th:text="${s.lastName}">Patel</td>
+<td th:text="${s.phoneNumber}">123456789</td>
+<td th:text="${s.appointmentDate}"></td>
+<td th:text="${s.birthday}"></td>
+<td><a th:href="@{/editContactById/}+${s.id}">Edit</a></td>
+<td><a th:href="@{/deleteContactById/}+${s.id}">Delete</a></td>
+</tr>
+</table>
+</div>
+<br><hr><br>
+<form method="post" th:action="@{/insertContact}"
+th:object="${contact}">
+<input type="hidden" name="id" th:field="*{id}">
+First Name:<input type="text" name="firstName" th:field="*{firstName}"><br>
+Last Name:<input type="text" name="lastName" th:field="*{lastName}"><br>
+Phone Number:<input type="text" name="phoneNumber" th:field="*{phoneNumber}"><br>
+Date:<input type="date" name="appointmentDate" th:field="*{appointmentDate}"><br>
+Birthday:<input type="date" name="birthday" th:field="*{birthday}"><br>
+<input type="submit" value="Save Contact!">
+<a th:href="@{/contact}">Modify Contact</a>
+</form>
+</body>
+</html>
