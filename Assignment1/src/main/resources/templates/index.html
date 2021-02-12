@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tim Horton's Orders</title>
+ <link rel='stylesheet' type='text/css' href='css/timhortons.css'>
+</head>
+<body>
+<div id='wrapper'>
+            <header>
+                <img src='images/logo-en.jpg'>
+                <h1>Welcome to Tim Horton's!</h1>
+            </header>
+        </div>
+        	<div class='main'>
+			<p style="text-align:center">Order Here: </p>
+			
+			<form id="myForm" method="post" action="#" th:action="@{/addOutput}" th:object="${order}" >
+			
+				Number of Coffees: <input type="number" name="numCoffee" min="0" max="30" 
+						class = "button button1" th:field="*{quantity}">
+				
+    <br>
+				Size: <select name="size" class="button button1" required th:field="*{size}">
+							<option class="fon" th:each="s:*{sizes}" th:value="${s}" th:text="${s}"></option>
+						</select><br>
+						
+									 
+					<ul>	
+					<li><input type="radio"  name="coffeeType" value="Regular">Regular</li>
+					<li><input type="radio"  name="coffeeType" value="Double Double">Double Double</li>
+					<li><input type="radio"  name="coffeeType" value="Triple Triple">Triple Triple</li>
+					<li><input type="radio"  name="coffeeType" value="Black">Black</li>
+					<li><input type="radio"  name="coffeeType" value="Black One Sugar">Black One Sugar</li>
+					<li><input type="radio"  name="coffeeType" value="Black Two Sugar">Black Two Sugar</li>
+					<li><input type="radio"  name="coffeeType" value="Black Three Sugar">Black Three Sugar</li>
+					</ul>
+    <br>
+						<input type="submit"  value="Order Coffee!" class="button1 sub">
+						
+			</form>
+		</div>
+		
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tim Horton's Orders</title>
+ <link rel='stylesheet' type='text/css' href='css/timhortons.css'>
+</head>
+<body>
+<div class=logo>
+			<p>Tim Hortons </p>
+		</div>
+<h1>Hi there!Thank you for your order, and here's your order: </h1>
+		<div class="main">
+<span th:each="i : ${#numbers.sequence( 1, order.quantity)}">
+<img src="images/cup.jpg" width=7%>
+<img src="images/plus.jpg" width=10%>
+ <span th:each="i : ${#numbers.sequence( 0, order.sugar)}">
+ <img src="images/plus.jpg" width=10%>
+   <img src="images/sugar.jpg" width="10%">
+</span>
+<span th:each="i : ${#numbers.sequence( 0, order.cream)}">
+ <img src="images/plus.jpg" width=10%>
+   <img src="images/cream.jpg" width="10%">
+</span>
+<br>
+</span>
+
+</div>
+ 
+
+<h2 th:text="'Subtotal: $' + ${order.price}+'+ 13% HST'">Subtotal: $+ 13% HST</h2>
+<h1 th:text="'Your Total is: $'+ ${order.total}"><br>Your Total is: $</h1>
+ <p class="nd" th:text="'So, far we have made $' + ${fTotal}">
+ So, far we have made $</p>
+ <button class="button1 sub" onclick="window.history.go(-1);">Order Again</button>
+ 
+ <button onclick="myFunction()" class="button1 sub">List Orders</button> 
+
+<table id="myOrders">
+
+  <tr>
+     <th>Order Quantity</th><th>CoffeeType</th><th>Size of a Cup</th><th>Total bill</th>
+  </tr>
+  <tr  th:each="aOrder: ${orderList}">
+    <td th:text="${aOrder.quantity}">1000</td>
+    <td th:text="${aOrder.coffeeType}">regular</td>
+    <td th:text="${aOrder.size}">small</td>
+    <td th:text="${aOrder.total}">10.99</td>
+    
+  </tr>
+
+</table>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myOrders");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+</body>
+</html>
