@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"> 
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+body{	
+background-color:#E6E6D8;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+#courses {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#courses td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#courses tr:nth-child(even){background-color: #f2f2f2;}
+
+#courses tr:hover {background-color: #ddd;}
+
+#courses th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+}
+#buton {
+padding: 16px 32px;
+		cursor: pointer;
+		background-color: white;
+		color: black;
+		text-align:center;
+		border-radius: 20px 40px;
+		border-style:solid;
+		border-width:2px;
+		font-size:20px;
+		font-weight:bold;
+}
+</style>
+</head>
+<body style="text-align:center;font-weight:900;">
+<h1>Add Courses</h1>
+<form method="post" action="#" th:action="@{/addCourse}">
+ID: <input type="number" name="id" /><br><br>
+Prefix: <input type="text" name="prefix" /><br><br>
+Code: <input type="text" name="code" /><br><br>
+Name: <input type="text" name="name" /><br><br>
+<input id="buton" type="submit" value="Add Course!" />
+</form>
+<br><br>
+<table id="courses">
+<tr><th>ID</th><th>Prefix</th><th>Code</th><th>Name</th>
+<tr th:each="aCourse:${courseList}">
+<td th:text="${aCourse.id}">55</td>
+<td th:text="${aCourse.prefix}">PROG</td>
+<td th:text="${aCourse.code}">24090</td>
+<td th:text="${aCourse.name}">Enterprise Java Development</td>
+</tr>
+</table> 
+</body>
+</html>
