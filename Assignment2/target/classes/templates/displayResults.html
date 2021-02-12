@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+
+#names {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#names td, #names th {
+  border: 2px solid black;
+  padding: 8px;
+}
+
+#names tr:nth-child(even){background-color: #374A82;}
+
+#names tr:hover {background-color: #0E2D88;}
+
+#names th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #0F1F4F;
+  color: white;
+}
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background-image: url("images/assign2.jpg");
+	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	height:auto;
+	color:white;
+	font-weight:bold;
+}
+hr{
+	border: 3px solid green;
+  	border-radius: 5px;
+}
+a:link, a:visited {
+	color: white;
+  	border: 2px solid green;
+  	padding: 10px 20px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+}
+
+a:hover, a:active {
+	background-color: green;
+  	color: white;
+}
+.footer{
+	text-align: center;
+  	background: #1abc9c;
+  	color: white;
+  	font-size: 12px;
+  	position: fixed;
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
+  	font-weight:900;
+}  
+#buton {
+padding: 16px 32px;
+		cursor: pointer;
+		background-color: white;
+		color: black;
+		text-align:center;
+		border-radius: 20px 40px;
+		border-style:solid;
+		border-width:2px;
+		font-size:20px;
+		font-weight:bold;
+}
+
+</style>
+
+<link rel="stylesheet" type="text/css" href='fifa.css'>
+
+</head>
+<body>
+<div class="container">
+<header>
+<a th:href="@{/}">Home</a>
+<a th:href="@{/addTeam} ">Add Team </a>
+<a th:href="@{/editTeam}">Edit Team </a>
+<a th:href="@{/deleteTeam}">Delete Team </a>
+<a th:href="@{/displayResults}">Display Results </a>
+</header>
+<hr>
+<form method="get" th:action="@{/orderTeamName}" >
+    <input type="submit" id="buton" value="Sort by Team Name">
+</form>
+<form method="get" th:action="@{/orderPts}" >
+    <input type="submit" id="buton" value="Sort by Points">
+</form>
+<form method="get" th:action="@{/orderTeamContinent}" >
+    <input type="submit" id="buton" value="Sort by Continent">
+</form>
+<table id="names" th:if="${teamList!= null AND      teamList!= ''}">
+<tr><th>Team Id</th><th>Team Name</th><th>Continent</th><th>Played games</th>
+     <th>Won games</th><th>Drawn games</th><th>Lost games</th><th>Points</th></tr>
+<tr th:each="t : ${teamList}">
+<td th:text="${t.teamId}">1000</td>
+<td th:text="${t.teamName}">France</td>
+<td th:text="${t.continent}">France</td>
+<td th:text="${t.played}">0</td>
+<td th:text="${t.won}">0</td>
+<td th:text="${t.drawn}">0</td>
+<td th:text="${t.lost}">0</td>
+<td th:text='${t.pts}' >0</td>
+</tr>
+
+</table>
+
+<div class=footer>
+<p>	&#169; &nbsp; 2020 by Jay Patel All rights reserved.</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background-image: url("images/assign2.jpg");
+	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	height:auto;
+	color:white;
+	font-weight:bold;
+}
+hr{
+	border: 3px solid green;
+  	border-radius: 5px;
+}
+a:link, a:visited {
+	color: white;
+  	border: 2px solid green;
+  	padding: 10px 20px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+}
+
+a:hover, a:active {
+	background-color: green;
+  	color: white;
+}
+.footer{
+	text-align: center;
+  	background: #1abc9c;
+  	color: white;
+  	font-size: 12px;
+  	position: fixed;
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
+  	font-weight:900;
+  	
+	
+}  
+</style>
+<meta charset="ISO-8859-1">
+<title>Home page</title>
+<link rel="stylesheet" type="text/css" th:href="@{/fifa.css}">
+</head>
+<body>
+<br>
+<div class="container">
+<header>
+<a th:href="@{/}">Home</a>
+<a th:href="@{/addTeam}">Add Team </a>
+<a th:href="@{/editTeam}">Edit Team </a>
+<a th:href="@{/deleteTeam}">Delete Team </a>
+<a th:href="@{/displayResults}">Display Results </a>
+</header>
+<hr>
+<h1>Welcome to Fifa Worldcup Score page!!!:)</h1>
+
+<div class=footer>
+<p>	&#169; &nbsp; 2020 by Jay Patel All rights reserved.</p>
+</div></div>
+</body>
+</html>

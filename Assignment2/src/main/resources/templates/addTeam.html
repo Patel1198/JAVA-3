@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Your Team</title>
+<link rel="stylesheet" type="text/css" th:href="@{/fifa.css}">
+<style>
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background-image: url("images/assign2.jpg");
+	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	height:auto;
+	color:white;
+	font-weight:bold;
+}
+hr{
+	border: 3px solid green;
+  	border-radius: 5px;
+}
+a:link, a:visited {
+	color: white;
+  	border: 2px solid green;
+  	padding: 10px 20px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+}
+
+a:hover, a:active {
+	background-color: green;
+  	color: white;
+}
+.footer{
+	text-align: center;
+  	background: #1abc9c;
+  	color: white;
+  	font-size: 12px;
+  	position: fixed;
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
+  	font-weight:900;
+}  
+#buton {
+padding: 16px 32px;
+		cursor: pointer;
+		background-color: white;
+		color: black;
+		text-align:center;
+		border-radius: 20px 40px;
+		border-style:solid;
+		border-width:2px;
+		font-size:20px;
+		font-weight:bold;
+}
+.hes{
+font-weight:900;
+font-size:16px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<a th:href="@{/}">Home</a>
+<a th:href="@{/addTeam}">Add Team </a>
+<a th:href="@{/editTeam}">Edit Team </a>
+<a th:href="@{/deleteTeam}">Delete Team </a>
+<a th:href="@{/displayResults}">Display Results </a>
+</header>
+<hr>
+<form method="post" action="/addTeam" th:action="@{/addTeam}" th:object="${team}">
+    <input type="hidden" name="teamId" th:field="*{teamId}"/>
+    <label class=hes>Team Name:</label> <input id="buton" type="text" name="teamName" th:field="*{teamName}" /><br>
+    <label class=hes>Continent: </label><select id="buton" th:field="*{continent}">
+          <option id="buton" th:each="c:*{continents}" th:value="${c}" th:text="${c}">
+          </option></select><br>
+    <label class=hes>Played: </label><input id="buton" type="number" name="played" th:field="*{played}" /><br>
+    <label class=hes>won: </label><input id="buton" type="number" name="won" th:field="*{won}" /><br>
+    <label class=hes>drawn: </label><input id="buton" type="number" name="drawn" th:field="*{drawn}" /><br>
+    <label class=hes>lost: </label><input id="buton" type="number" name="lost" th:field="*{lost}" /><br> <br>
+    <input id="buton" type="submit" value="Goal!" />
+</form>
+
+<hr>
+<div class=footer>
+<p>	&#169; &nbsp; 2020 by Jay Patel All rights reserved.</p>
+</div></div>
+</body>
+</html>
