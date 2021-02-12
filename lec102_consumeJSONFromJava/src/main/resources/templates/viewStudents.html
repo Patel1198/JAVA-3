@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"> 
+<head>
+<meta charset="ISO-8859-1">
+<title>View Students</title>
+<script src="../static/js/script.js" th:src="@{/js/script.js}"></script>
+<style type="text/css">
+body{
+text-align:center;
+font-family:Arial, Helvetica, sans-serif;
+}
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>View Subject List</h1>
+<h3 th:each="stu:${studentList}">
+	<a href="#" th:onclick="'getStudent('+ ${stu.id} + ')'" th:text="${stu.name}"></a>
+	<div th:id="'student' + ${stu.id}"></div>
+	
+</h3>
+
+</body>
+</html>
