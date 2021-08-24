@@ -27,3 +27,4 @@ public class Contact {
 	private final String[] roles = {"ROLE_ADMIN", "ROLE_GUEST", "ROLE_USER"}; 
 	
 }
+
